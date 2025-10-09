@@ -1,17 +1,17 @@
 //------------------DENIS MAIN------------------
 
-// // метода для вывода текста с задержкой 100 мс
-// public static void printWithDelay(String text, int delayMS) {
-//     for (int i = 0; i < text.length(); i++) {
-//         System.out.println(text.charAt(i));
-//         try {
-//             Thread.sleep(delayMS);
-//         } catch (InterruptedException e) {
-//             e.printStackTrace();
-//         }
-//     }
-//     System.out.println();
-// }
+// метода для вывода текста с задержкой 100 мс
+public static void printWithDelay(String text, int delayMS) {
+    for (int i = 0; i < text.length(); i++) {
+        System.out.println(text.charAt(i));
+        try {
+            Thread.sleep(delayMS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    System.out.println();
+}
 
 // public static void main(String[] args){
 //     System.out.println("Лабораторная работа №1: Создание потоков");
@@ -29,10 +29,10 @@
 
 //      System.out.println("Генерация массива из 100 элементов: ");
 
-//       for (int i = 0; i < 5; i++) {
-//         System.out.println(mas[i] + " ");
-//       }
-//       System.out.println("..\n");
+      for (int i = 0; i < 5; i++) {
+        System.out.println(mas[i] + " ");
+      }
+      System.out.println("..\n");
 
 //       //подсчёт чётных чисел для информации
 
@@ -80,13 +80,13 @@
 //        System.out.println("\n" + "".repeat(70));
 //        System.out.println("Финальные результаты работы потоков");
 
-//        System.out.println("Поток Th1.      Сумма = " + thread1.getSum());
-//        System.out.println("Поток Th2.      Сумма = " + thread2.getSum());
-//        System.out.println("Ожидаемая       Сумма = " + expectedSum);
-//        System.out.println("Проверка многопоточности:  " + 
-//        (thread1.getSum() == thread2.getSum() && 
-//        thread1.getSum() == expectedSum ? "PASSED" : "FAILED"));
-//  }
+       System.out.println("Поток Th1.      Сумма = " + thread1.getSum());
+       System.out.println("Поток Th2.      Сумма = " + thread2.getSum());
+       System.out.println("Ожидаемая       Сумма = " + expectedSum);
+       System.out.println("Проверка многопоточности:  " + 
+       (thread1.getSum() == thread2.getSum() && 
+       thread1.getSum() == expectedSum ? "PASSED" : "FAILED"));
+ }
 
 
 

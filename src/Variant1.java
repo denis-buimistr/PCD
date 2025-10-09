@@ -14,18 +14,19 @@
         System.out.println("\n" + getName() + "Поиск и суммирование с первого элемента" );
         System.out.println("=".repeat(70));
 
-        for(int i = 0; i < mas.length; i++) {
-            if (mas[i] % 2 == 0) { // проверяю на чётность
-                sum += mas[i];
-                System.out.println();
-            }
+        for (int i = 0; i < mas.length - 1; i += 2) {
+    if (mas[i] % 2 == 0 && mas[i + 1] % 2 == 0) {
+        int pairSum = mas[i] + mas[i + 1];
+        sum += pairSum;
+        System.out.println(getName() + " Пара: " + mas[i] + " + " + mas[i + 1] + " = " + pairSum);
+    }
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
 
-            try {
-                Thread.sleep(1000); // сделал небольшую задержку для наглядности
-            } catch(InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
         System.out.println("=".repeat(70));
         System.out.println(getName() + "Сумма чётных: " + sum);
     }
@@ -50,21 +51,22 @@
 
         @Override
     public void run() {
-        System.out.println("\n" + getName() + "Поиск и суммирование с первого элемента" );
+        System.out.println("\n" + getName() + "Поиск и суммирование с последнего элемента" );
         System.out.println("=".repeat(70));
 
-        for(int i = mas.length - 1; i >= 0; i--) {
-            if (mas[i] % 2 == 0) { // проверяю на чётность
-                sum += mas[i];
-                System.out.println();
-            }
+        for (int i = mas.length - 1; i > 0; i -= 2) {
+    if (mas[i] % 2 == 0 && mas[i - 1] % 2 == 0) {
+        int pairSum = mas[i] + mas[i - 1];
+        sum += pairSum;
+        System.out.println(getName() + " Пара: " + mas[i - 1] + " + " + mas[i] + " = " + pairSum);
+    }
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
 
-            try {
-                Thread.sleep(1000); // сделал небольшую задержку для наглядности
-            } catch(InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
         System.out.println("=".repeat(70));
         System.out.println(getName() + "Сумма чётных: " + sum);
     }
