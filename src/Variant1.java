@@ -1,4 +1,4 @@
-// TASK_1 -> Суммы четных чисел по два, начинаяпоиск и суммирование с первого элемента
+// TASK_1 -> Суммы четных чисел по два, начиная поиск и суммирование с первого элемента массива
 
  class Variant1 extends Thread{  // суммирование с первого элемента 
       private int[] mas;
@@ -15,16 +15,16 @@
         System.out.println("=".repeat(70));
 
         for (int i = 0; i < mas.length - 1; i += 2) {
-    if (mas[i] % 2 == 0 && mas[i + 1] % 2 == 0) {
+        if (mas[i] % 2 == 0 && mas[i + 1] % 2 == 0) {
         int pairSum = mas[i] + mas[i + 1];
         sum += pairSum;
         System.out.println(getName() + " Пара: " + mas[i] + " + " + mas[i + 1] + " = " + pairSum);
     }
-    try {
-        Thread.sleep(1000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
+    // try {
+    //     Thread.sleep(1000);
+    // } catch (InterruptedException e) {
+    //     e.printStackTrace();
+    // }
 }
 
         System.out.println("=".repeat(70));
@@ -60,11 +60,11 @@
         sum += pairSum;
         System.out.println(getName() + " Пара: " + mas[i - 1] + " + " + mas[i] + " = " + pairSum);
     }
-    try {
-        Thread.sleep(1000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
+    // try {
+    //     Thread.sleep(1000);
+    // } catch (InterruptedException e) {
+    //     e.printStackTrace();
+    // }
 }
 
         System.out.println("=".repeat(70));
