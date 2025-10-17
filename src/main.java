@@ -33,6 +33,23 @@ public class main {
         Tha.start(); Thb.start(); Thc.start(); Thd.start();
         Th1_g2.start(); Th2_g2.start(); Th3_g2.start();
         th1_g1.start(); th1_g2.start(); th1_g3.start();
+
+        // Массив всех потоков
+        // Thread[] allThreads = {
+        //     Tha, Thb, Thc, Thd,
+        //     Th1_g2, Th2_g2, Th3_g2,
+        //     th1_g1, th1_g2, th1_g3
+        // };
+
+        // Запуск с паузами, чтобы видно было, как потоки стартуют
+        // for (Thread t : allThreads) {
+        //     t.start();
+        //     try {
+        //         Thread.sleep(300);
+        //     } catch (InterruptedException e) {
+        //         e.printStackTrace();
+        //     }
+        // }
         
     }
 }
