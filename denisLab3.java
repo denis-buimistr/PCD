@@ -1,13 +1,13 @@
 // Lab.java
 import java.util.concurrent.CountDownLatch;
 
+
 class Th1 implements Runnable {
     private final int[] arr;
-    private final CountDownLatch latch;
+    // private final CountDownLatch latch;
 
-    public Th1(int[] arr, CountDownLatch latch) {
+    public Th1(int[] arr) {
         this.arr = arr;
-        this.latch = latch;
     }
 
     @Override
@@ -29,17 +29,26 @@ class Th1 implements Runnable {
         synchronized (PrintLocks.LOCK_12) {
             System.out.print(sb.toString());
         }
-        latch.countDown();
+        main.latch.countDown();
+
+        try {
+           main.latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    
+        
     }
 }
 
 class Th2 implements Runnable {
     private final int[] arr;
-    private final CountDownLatch latch;
 
-    public Th2(int[] arr, CountDownLatch latch) {
+
+    public Th2(int[] arr) {
         this.arr = arr;
-        this.latch = latch;
+
     }
 
     @Override
@@ -61,16 +70,17 @@ class Th2 implements Runnable {
         synchronized (PrintLocks.LOCK_12) {
             System.out.print(sb.toString());
         }
-        latch.countDown();
+        main.latch.countDown();
+
+        try {
+            main.latch.await();
+        } catch (InterruptedException e) {
+           e.printStackTrace();
+        }
     }
 }
 
 class Th3 implements Runnable {
-    private final CountDownLatch latch;
-
-    public Th3(CountDownLatch latch) {
-        this.latch = latch;
-    }
 
     @Override
     public void run() {
@@ -87,16 +97,17 @@ class Th3 implements Runnable {
         synchronized (PrintLocks.LOCK_34) {
             System.out.print(sb.toString());
         }
-        latch.countDown();
+        main.latch.countDown();
+
+        try {
+            main.latch.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
 class Th4 implements Runnable {
-    private final CountDownLatch latch;
-
-    public Th4(CountDownLatch latch) {
-        this.latch = latch;
-    }
 
     @Override
     public void run() {
@@ -113,6 +124,12 @@ class Th4 implements Runnable {
         synchronized (PrintLocks.LOCK_34) {
             System.out.print(sb.toString());
         }
-        latch.countDown();
+        main.latch.countDown();
+
+        try {
+            main.latch.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
