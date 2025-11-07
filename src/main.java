@@ -35,7 +35,7 @@ public class main {
         th1_g1.start(); th1_g2.start(); th1_g3.start();
         
        
-        // вызываем никитоса вариант
+        // вызываем никиты вариант
         nikitaMediumVariant.runVariant();
     }
 
