@@ -1,14 +1,15 @@
 import java.util.random.*;
 import java.util.HashMap;
 import java.util.Random;
+
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ProducerConsumerLab4 {
     private static final int BUFFER_CAPACITY = 8;  // D (размер склада)
     private static final int PRODUCER_COUNT = 2;   // X (кол-во производителей)
-    private static final int CONSUMER_COUNT = 3;   // Y (кол-во производителей)
-    private static final int CONSUMER_GOAL = 11;  // Z (кол-во объектов для каждого произвоителя)
+    private static final int CONSUMER_COUNT = 3;   // Y (кол-во потребителя)
+    private static final int CONSUMER_GOAL = 11;   // Z (кол-во объектов для каждого произвоителя)
     private static final int TOTAL_OBJECTS = CONSUMER_COUNT * CONSUMER_GOAL;  // 33
 
     private static final BlockingQueue<Integer> buffer = new ArrayBlockingQueue<>(BUFFER_CAPACITY);
@@ -17,7 +18,6 @@ public class ProducerConsumerLab4 {
     private static final AtomicInteger totalProduced = new AtomicInteger(0);
     private static final AtomicInteger totalConsumed = new AtomicInteger(0);
     private static final ConcurrentHashMap<Integer, AtomicInteger> consumerCounters = new ConcurrentHashMap<>();
-
     public static void main(String[] args)  {
         ExecutorService executor = Executors.newFixedThreadPool(PRODUCER_COUNT + CONSUMER_COUNT);
     
@@ -38,10 +38,11 @@ public class ProducerConsumerLab4 {
 
         executor.shutdown();
 
+        
         try {
             executor.awaitTermination(60,TimeUnit.SECONDS);
         } catch (Exception e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         System.out.println("\n======== ИТОГОВЫЙ ОТЧЁТ ========");
@@ -86,8 +87,8 @@ public class ProducerConsumerLab4 {
 
                     Thread.sleep(random.nextInt(300));
                 }
-            } catch (Exception e) {
-                Thread.currentThread().interrupt();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -123,7 +124,7 @@ public class ProducerConsumerLab4 {
             System.out.println(" Потребитель " + id + " получил все " + CONSUMER_GOAL + " объектов и завершил работу!");
 
         } catch (InterruptedException e ) {
-            Thread.currentThread().interrupt();
+            e.printStackTrace();
         }
         }
     }
